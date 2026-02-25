@@ -1,3 +1,4 @@
+
 public class UseCase2PalindromeChecker {
     public static void main(String[] args) {
         String input = "madam"; // Hardcoded input
@@ -15,4 +16,4 @@ public class UseCase2PalindromeChecker {
             System.out.println(input + " is NOT a Palindrome.");
         }
     }
-}
+
