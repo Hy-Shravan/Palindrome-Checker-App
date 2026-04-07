@@ -1,44 +1,33 @@
-import java.util.*;
+import java.util.Deque;
+import java.util.ArrayDeque;
 
-public class PalindromeChecker {
+public class PalindromeDeque {
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        String input = "refer";
 
-        System.out.print("Enter a string: ");
-        String input = sc.nextLine();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Create Queue (FIFO) and Stack (LIFO)
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
-
-        // Enqueue and Push characters
-        for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            queue.add(ch);   // Enqueue (FIFO)
-            stack.push(ch);  // Push (LIFO)
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);  // insert at rear
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue (queue) vs pop (stack)
-        while (!queue.isEmpty()) {
-            char fromQueue = queue.remove(); // Dequeue (front)
-            char fromStack = stack.pop();    // Pop (top)
+        while (deque.size() > 1) {
+            char front = deque.removeFirst(); // remove from front
+            char rear = deque.removeLast();   // remove from rear
 
-            if (fromQueue != fromStack) {
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Display result
         if (isPalindrome) {
-            System.out.println("The string is a palindrome.");
+            System.out.println(input + " is a palindrome.");
         } else {
-            System.out.println("The string is NOT a palindrome.");
+            System.out.println(input + " is NOT a palindrome.");
         }
-
-        sc.close();
     }
 }
